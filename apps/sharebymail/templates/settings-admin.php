@@ -14,10 +14,6 @@ style('sharebymail', 'settings-admin');
 	p('checked');
 } ?> />
 		<label for="sendPasswordMail"><?php p($l->t('Send password by mail')); ?></label><br/>
-		<input id="enforcePasswordProtection" type="checkbox" class="checkbox" <?php if ($_['enforcePasswordProtection']) {
-	p('checked');
-} ?> />
-		<label for="enforcePasswordProtection"><?php p($l->t('Enforce password protection')); ?></label>
 	</p>
 
 </div>

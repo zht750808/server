@@ -558,11 +558,11 @@ class ShareAPIController extends OCSController {
 			// Only share by mail have a recipient
 			if ($shareType === IShare::TYPE_EMAIL) {
 				$share->setSharedWith($shareWith);
-			} else {
-				// Only link share have a label
-				if (!empty($label)) {
-					$share->setLabel($label);
-				}
+			}
+
+			// If we have a label, use it
+			if (!empty($label)) {
+				$share->setLabel($label);
 			}
 
 			if ($sendPasswordByTalk === 'true') {
@@ -1125,8 +1125,7 @@ class ShareAPIController extends OCSController {
 				$share->setPassword($password);
 			}
 
-			// only link shares have labels
-			if ($share->getShareType() === IShare::TYPE_LINK && $label !== null) {
+			if ($label !== null) {
 				if (strlen($label) > 255) {
 					throw new OCSBadRequestException("Maxmimum label length is 255");
 				}

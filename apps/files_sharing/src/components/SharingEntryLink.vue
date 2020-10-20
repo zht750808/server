@@ -29,6 +29,9 @@
 			<h5 :title="title">
 				{{ title }}
 			</h5>
+			<p v-if="subtitle">
+				{{ subtitle }}
+			</p>
 		</div>
 
 		<!-- clipboard -->
@@ -403,7 +406,6 @@ export default {
 
 		/**
 		 * Link share label
-		 * TODO: allow editing
 		 * @returns {string}
 		 */
 		title() {
@@ -421,6 +423,11 @@ export default {
 					})
 				}
 				if (this.share.label && this.share.label.trim() !== '') {
+					if (this.isEmailShareType) {
+						return t('files_sharing', 'Mail share ({label})', {
+							label: this.share.label.trim(),
+						})
+					}
 					return t('files_sharing', 'Share link ({label})', {
 						label: this.share.label.trim(),
 					})
@@ -430,6 +437,18 @@ export default {
 				}
 			}
 			return t('files_sharing', 'Share link')
+		},
+
+		/**
+		 * Show the email on a second line if a label is set for mail shares
+		 * @returns {string}
+		 */
+		subtitle() {
+			if (this.isEmailShareType
+				&& this.title !== this.share.shareWith) {
+				return this.share.shareWith
+			}
+			return null
 		},
 
 		/**
@@ -917,6 +936,9 @@ export default {
 			text-overflow: ellipsis;
 			overflow: hidden;
 			white-space: nowrap;
+		}
+		p {
+			color: var(--color-text-maxcontrast);
 		}
 	}
 

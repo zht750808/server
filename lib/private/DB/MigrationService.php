@@ -454,7 +454,7 @@ class MigrationService {
 			$targetSchema = $toSchema->getWrappedSchema();
 			if ($this->checkOracle) {
 				$beforeSchema = $this->connection->createSchema();
-				$this->ensureOracleIdentifierLengthLimit($beforeSchema, $targetSchema, strlen($this->connection->getPrefix()));
+				$this->ensureOracleConstraints($beforeSchema, $targetSchema, strlen($this->connection->getPrefix()));
 			}
 			$this->connection->migrateToSchema($targetSchema);
 			$toSchema->performDropTableCalls();
@@ -527,7 +527,7 @@ class MigrationService {
 			$targetSchema = $toSchema->getWrappedSchema();
 			if ($this->checkOracle) {
 				$sourceSchema = $this->connection->createSchema();
-				$this->ensureOracleIdentifierLengthLimit($sourceSchema, $targetSchema, strlen($this->connection->getPrefix()));
+				$this->ensureOracleConstraints($sourceSchema, $targetSchema, strlen($this->connection->getPrefix()));
 			}
 			$this->connection->migrateToSchema($targetSchema);
 			$toSchema->performDropTableCalls();
@@ -560,7 +560,7 @@ class MigrationService {
 	 * @param int $prefixLength
 	 * @throws \Doctrine\DBAL\Exception
 	 */
-	public function ensureOracleIdentifierLengthLimit(Schema $sourceSchema, Schema $targetSchema, int $prefixLength) {
+	public function ensureOracleConstraints(Schema $sourceSchema, Schema $targetSchema, int $prefixLength) {
 		$sequences = $targetSchema->getSequences();
 
 		foreach ($targetSchema->getTables() as $table) {

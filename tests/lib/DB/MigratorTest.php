@@ -125,53 +125,6 @@ class MigratorTest extends \Test\TestCase {
 		return $this->connection->getDriver() instanceof \Doctrine\DBAL\Driver\PDOSqlite\Driver;
 	}
 
-	
-	public function testDuplicateKeyUpgrade() {
-		$this->expectException(\OC\DB\MigrationException::class);
-
-		if ($this->isSQLite()) {
-			$this->markTestSkipped('sqlite does not throw errors when creating a new key on existing data');
-		}
-		list($startSchema, $endSchema) = $this->getDuplicateKeySchemas();
-		$migrator = $this->manager->getMigrator();
-		$migrator->migrate($startSchema);
-
-		$this->connection->insert($this->tableName, ['id' => 1, 'name' => 'foo']);
-		$this->connection->insert($this->tableName, ['id' => 2, 'name' => 'bar']);
-		$this->connection->insert($this->tableName, ['id' => 2, 'name' => 'qwerty']);
-
-		$migrator->checkMigrate($endSchema);
-		$this->fail('checkMigrate should have failed');
-	}
-
-	public function testChangeToString() {
-		list($startSchema, $endSchema) = $this->getChangedTypeSchema('integer', 'string');
-		$migrator = $this->manager->getMigrator();
-		$migrator->migrate($startSchema);
-		$schema = new SchemaWrapper($this->connection);
-		$table = $schema->getTable(substr($this->tableName, 3));
-		$this->assertEquals('integer', $table->getColumn('id')->getType()->getName());
-
-		$this->connection->insert($this->tableName, ['id' => 1, 'name' => 'foo']);
-		$this->connection->insert($this->tableName, ['id' => 2, 'name' => 'bar']);
-		$this->connection->insert($this->tableName, ['id' => 3, 'name' => 'qwerty']);
-
-		$migrator->checkMigrate($endSchema);
-		$migrator->migrate($endSchema);
-		$this->addToAssertionCount(1);
-
-		$qb = $this->connection->getQueryBuilder();
-		$result = $qb->select('*')->from(substr($this->tableName, 3))->execute();
-		$this->assertEquals([
-			['id' => 1, 'name' => 'foo'],
-			['id' => 2, 'name' => 'bar'],
-			['id' => 3, 'name' => 'qwerty']
-		], $result->fetchAll());
-		$schema = new SchemaWrapper($this->connection);
-		$table = $schema->getTable(substr($this->tableName, 3));
-		$this->assertEquals('string', $table->getColumn('id')->getType()->getName());
-	}
-
 	public function testUpgrade() {
 		list($startSchema, $endSchema) = $this->getDuplicateKeySchemas();
 		$migrator = $this->manager->getMigrator();
@@ -181,7 +134,6 @@ class MigratorTest extends \Test\TestCase {
 		$this->connection->insert($this->tableName, ['id' => 2, 'name' => 'bar']);
 		$this->connection->insert($this->tableName, ['id' => 3, 'name' => 'qwerty']);
 
-		$migrator->checkMigrate($endSchema);
 		$migrator->migrate($endSchema);
 		$this->addToAssertionCount(1);
 	}
@@ -200,7 +152,6 @@ class MigratorTest extends \Test\TestCase {
 		$this->connection->insert($this->tableName, ['id' => 2, 'name' => 'bar']);
 		$this->connection->insert($this->tableName, ['id' => 3, 'name' => 'qwerty']);
 
-		$migrator->checkMigrate($endSchema);
 		$migrator->migrate($endSchema);
 		$this->addToAssertionCount(1);
 
@@ -239,7 +190,6 @@ class MigratorTest extends \Test\TestCase {
 		$migrator = $this->manager->getMigrator();
 		$migrator->migrate($startSchema);
 
-		$migrator->checkMigrate($endSchema);
 		$migrator->migrate($endSchema);
 
 		$this->addToAssertionCount(1);
@@ -261,7 +211,7 @@ class MigratorTest extends \Test\TestCase {
 		$migrator = $this->manager->getMigrator();
 		$migrator->migrate($startSchema);
 
-		$migrator->checkMigrate($endSchema);
+
 		$migrator->migrate($endSchema);
 
 		$this->addToAssertionCount(1);

@@ -1,8 +1,8 @@
 /**
  * @copyright Copyright (c) 2020 Roeland Jago Douma <roeland@famdouma.nl>
  *
- * @author Roeland Jago Douma <roeland@famdouma.nl>
- * @author John Molakvoæ <skjnldsv@protonmail.com>
+ * @author Jan C. Borchardt <hey@jancborchardt.net>
+ * @author John Molakvoæ (skjnldsv) <skjnldsv@protonmail.com>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -17,7 +17,8 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 import { loadState } from '@nextcloud/initial-state'
 

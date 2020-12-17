@@ -1,14 +1,34 @@
 /**
- * ownCloud
- *
- * @author Juan Pablo Villafañez Ramos <jvillafanez@owncloud.com>
- * @author Jesus Macias Portela <jesus@owncloud.com>
  * @copyright (C) 2014 ownCloud, Inc.
  *
- * This file is licensed under the Affero General Public License version 3
- * or later.
+ * @author Allan Nordhøy <epost@anotheragency.no>
+ * @author Christoph Wurst <christoph@winzerhof-wurst.at>
+ * @author Daniel Calviño Sánchez <danxuliu@gmail.com>
+ * @author Felix A. Epp <work@felixepp.de>
+ * @author Jesús Macias <jmacias@solidgear.es>
+ * @author Joas Schilling <coding@schilljs.com>
+ * @author John Molakvoæ (skjnldsv) <skjnldsv@protonmail.com>
+ * @author Juan Pablo Villafáñez <jvillafanez@solidgear.es>
+ * @author Julius Haertl <jus@bitgrid.net>
+ * @author Morris Jobke <hey@morrisjobke.de>
+ * @author noveens <noveen.sachdeva@research.iiit.ac.in>
+ * @author Robin Appelman <robin@icewind.nl>
+ * @author Sascha Wiswedel <sascha.wiswedel@nextcloud.com>
+ * @author Vincent Petry <vincent@nextcloud.com>
  *
- * See the COPYING-README file.
+ * @license AGPL-3.0
+ *
+ * This code is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License, version 3,
+ * as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License, version 3,
+ * along with this program. If not, see <http://www.gnu.org/licenses/>
  *
  */
 

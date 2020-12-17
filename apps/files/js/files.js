@@ -1,10 +1,49 @@
-/*
- * Copyright (c) 2014
+/**
  *
- * This file is licensed under the Affero General Public License version 3
- * or later.
  *
- * See the COPYING-README file.
+ * @author Arthur Schiwon <blizzz@arthur-schiwon.de>
+ * @author Bart Visscher <bartv@thisnet.nl>
+ * @author Bernhard Posselt <dev@bernhard-posselt.com>
+ * @author Christoph Wurst <christoph@winzerhof-wurst.at>
+ * @author Dawid Opis <ncore@ncore.com.pl>
+ * @author Erik Pellikka <erik@pellikka.org>
+ * @author Felix Heidecke <felix@heidecke.me>
+ * @author Hendrik Leppelsack <hendrik@leppelsack.de>
+ * @author Joas Schilling <coding@schilljs.com>
+ * @author John Molakvoæ (skjnldsv) <skjnldsv@protonmail.com>
+ * @author Jörn Friedrich Dreyer <jfd@butonic.de>
+ * @author Julian Müller <julian.mueller.ffb@kabelmail.de>
+ * @author Julius Härtl <jus@bitgrid.net>
+ * @author Lukas Reschke <lukas@statuscode.ch>
+ * @author Michael Jobst <mjobst@necls.com>
+ * @author Morris Jobke <hey@morrisjobke.de>
+ * @author Nazar Mokrynskyi <nazar@mokrynskyi.com>
+ * @author noveens <noveen.sachdeva@research.iiit.ac.in>
+ * @author Patrik Kernstock <info@pkern.at>
+ * @author Robin Appelman <robin@icewind.nl>
+ * @author Roeland Jago Douma <roeland@famdouma.nl>
+ * @author Roman Geber <rgeber@owncloudapps.com>
+ * @author Thomas Müller <thomas.mueller@tmit.eu>
+ * @author Tomasz Grobelny <tomasz@grobelny.net>
+ * @author Valdnet <47037905+Valdnet@users.noreply.github.com>
+ * @author Vincent Petry <vincent@nextcloud.com>
+ * @author Volkan Gezer <volkangezer@gmail.com>
+ * @author zombiehugs <gerdsen@gmail.com>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
 

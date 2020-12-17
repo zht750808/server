@@ -1,10 +1,39 @@
 /**
- * Copyright (c) 2015 Lukas Reschke <lukas@owncloud.com>
  *
- * This file is licensed under the Affero General Public License version 3
- * or later.
  *
- * See the COPYING-README file.
+ * @author Allan Nordhøy <epost@anotheragency.no>
+ * @author Christoph Wurst <christoph@winzerhof-wurst.at>
+ * @author Cthulhux <git@tuxproject.de>
+ * @author Daniel Calviño Sánchez <danxuliu@gmail.com>
+ * @author Daniel Peukert <dan.peukert@gmail.com>
+ * @author Jan-Christoph Borchardt <hey@jancborchardt.net>
+ * @author Joas Schilling <coding@schilljs.com>
+ * @author Lukas Reschke <lukas@statuscode.ch>
+ * @author Markus Staab <markus.staab@redaxo.de>
+ * @author Michael Weimann <mail@michael-weimann.eu>
+ * @author Moritz Beck <git@birkenstab.de>
+ * @author Morris Jobke <hey@morrisjobke.de>
+ * @author Robin McCorkell <robin@mccorkell.me.uk>
+ * @author Roeland Jago Douma <roeland@famdouma.nl>
+ * @author Timo Förster <tfoerster@webfoersterei.de>
+ * @author Victor Goff <keeperotphones@gmail.com>
+ * @author Vincent Chan <plus.vincchan@gmail.com>
+ * @author Vincent Petry <vincent@nextcloud.com>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
 

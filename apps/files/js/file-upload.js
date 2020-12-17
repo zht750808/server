@@ -1,10 +1,45 @@
-/*
- * Copyright (c) 2014
+/**
  *
- * This file is licensed under the Affero General Public License version 3
- * or later.
  *
- * See the COPYING-README file.
+ * @author Bekcpear <ink2.0plus@gmail.com>
+ * @author Björn Schießle <bjoern@schiessle.org>
+ * @author Christoph Wurst <christoph@winzerhof-wurst.at>
+ * @author Daniel Calviño Sánchez <danxuliu@gmail.com>
+ * @author Evilham <github@evilham.com>
+ * @author Joas Schilling <coding@schilljs.com>
+ * @author John Molakvoæ (skjnldsv) <skjnldsv@protonmail.com>
+ * @author Jörn Friedrich Dreyer <jfd@butonic.de>
+ * @author Julius Härtl <jus@bitgrid.net>
+ * @author luckydonald <luckydonald@flutterb.at>
+ * @author Morris Jobke <hey@morrisjobke.de>
+ * @author noveens <noveen.sachdeva@research.iiit.ac.in>
+ * @author Oskar Hollmann <oskarhollmann@gmail.com>
+ * @author Pellaeon Lin <nfsmwlin@gmail.com>
+ * @author pflug <dev@admin4.org>
+ * @author Roeland Jago Douma <roeland@famdouma.nl>
+ * @author Roman Geber <rgeber@owncloudapps.com>
+ * @author SarthikaDhawan <sarthika15170@iiitd.ac.in>
+ * @author Thomas Müller <thomas.mueller@tmit.eu>
+ * @author Tigran Mkrtchyan <tigran.mkrtchyan@desy.de>
+ * @author Tomasz Grobelny <tomasz@grobelny.net>
+ * @author Valdnet <47037905+Valdnet@users.noreply.github.com>
+ * @author Vincent Chan <plus.vincchan@gmail.com>
+ * @author Vincent Petry <vincent@nextcloud.com>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
 

@@ -1,10 +1,31 @@
-/*
- * Copyright (c) 2014
+/**
  *
- * This file is licensed under the Affero General Public License version 3
- * or later.
  *
- * See the COPYING-README file.
+ * @author Christian Aigner <christian.aigner@huemer-it.com>
+ * @author Jan-Christoph Borchardt <hey@jancborchardt.net>
+ * @author Joas Schilling <coding@schilljs.com>
+ * @author John Molakvoæ (skjnldsv) <skjnldsv@protonmail.com>
+ * @author Kevin Ndung'u <kevgathuku@gmail.com>
+ * @author Olivier Tétard <olivier.tetard@miskin.fr>
+ * @author Phil Davis <phil@jankaritech.com>
+ * @author Roeland Jago Douma <roeland@famdouma.nl>
+ * @author Stefan Weil <sw@weilnetz.de>
+ * @author Vincent Petry <vincent@nextcloud.com>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
 

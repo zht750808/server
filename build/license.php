@@ -111,7 +111,7 @@ EOD;
 			return true;
 		});
 		$iterator = new RecursiveIteratorIterator($iterator);
-		$iterator = new RegexIterator($iterator, '/^.+\.php$/i');
+		$iterator = new RegexIterator($iterator, '/^.+\.(php|js)$/i');
 
 		foreach ($iterator as $file) {
 			/** @var SplFileInfo $file */
@@ -140,6 +140,8 @@ With help from many libraries and frameworks including:
 	}
 
 	public function handleFile($path, $gitRoot) {
+		$isPhp = preg_match('/^.+\.php$/i', $path);
+
 		$source = file_get_contents($path);
 		if ($this->isMITLicensed($source)) {
 			echo "MIT licensed file: $path" . PHP_EOL;
@@ -161,12 +163,18 @@ With help from many libraries and frameworks including:
 		}
 
 		[$source, $isStrict] = $this->eatOldLicense($source);
-		if ($isStrict) {
-			$source = "<?php" . PHP_EOL . PHP_EOL . 'declare(strict_types=1);' . PHP_EOL . PHP_EOL . $license . PHP_EOL . $source;
+
+		if ($isPhp) {
+			if ($isStrict) {
+				$source = "<?php" . PHP_EOL . PHP_EOL . 'declare(strict_types=1);' . PHP_EOL . PHP_EOL . $license . PHP_EOL . $source;
+			} else {
+				$source = "<?php" . PHP_EOL . $license . PHP_EOL . $source;
+			}
 		} else {
-			$source = "<?php" . PHP_EOL . $license . PHP_EOL . $source;
+			$source = $license . PHP_EOL . $source;
 		}
-		file_put_contents($path,$source);
+
+		file_put_contents($path, $source);
 		echo "License updated: $path" . PHP_EOL;
 	}
 
@@ -386,6 +394,8 @@ if (isset($argv[1])) {
 		'../apps/admin_audit',
 		'../apps/cloud_federation_api',
 		'../apps/comments',
+		'../apps/contactsinteraction',
+		'../apps/dashboard',
 		'../apps/dav',
 		'../apps/encryption',
 		'../apps/federatedfilesharing',
@@ -406,6 +416,9 @@ if (isset($argv[1])) {
 		'../apps/twofactor_backupcodes',
 		'../apps/updatenotification',
 		'../apps/user_ldap',
+		'../apps/user_status',
+		'../apps/weather_status',
+		'../apps/workflowengine',
 		'../build/integration/features/bootstrap',
 		'../core',
 		'../lib',

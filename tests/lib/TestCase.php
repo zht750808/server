@@ -33,6 +33,7 @@ use OCP\Defaults;
 use OCP\IDBConnection;
 use OCP\IL10N;
 use OCP\Security\ISecureRandom;
+use PHPUnit\Util\Test;
 
 abstract class TestCase extends \PHPUnit\Framework\TestCase {
 	/** @var \OC\Command\QueueBus */
@@ -460,7 +461,10 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase {
 		if (true == getenv('TRAVIS')) {
 			return true;
 		}
-		$annotations = $this->getAnnotations();
+		$annotations = Test::parseTestMethodAnnotations(
+			get_class($this),
+			$this->getName(false)
+		);
 		if (isset($annotations['class']['group'])) {
 			if (in_array('DB', $annotations['class']['group']) || in_array('SLOWDB', $annotations['class']['group'])) {
 				return true;

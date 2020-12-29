@@ -1594,7 +1594,6 @@ class ShareAPIController extends OCSController {
 			IShare::TYPE_GROUP,
 			IShare::TYPE_LINK,
 			IShare::TYPE_EMAIL,
-			IShare::TYPE_EMAIL,
 			IShare::TYPE_CIRCLE,
 			IShare::TYPE_ROOM,
 			IShare::TYPE_DECK

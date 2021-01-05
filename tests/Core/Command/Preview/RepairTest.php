@@ -9,6 +9,7 @@ use OCP\Files\IRootFolder;
 use OCP\Files\Node;
 use OCP\IConfig;
 use OCP\ILogger;
+use OCP\Lock\ILockingProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\Console\Formatter\OutputFormatterInterface;
 use Symfony\Component\Console\Input\InputInterface;
@@ -30,20 +31,19 @@ class RepairTest extends TestCase {
 	private $output;
 	/** @var string */
 	private $outputLines = '';
+	/**  @var ILockingProvider|MockObject */
+	private $lockingProvider;
 	/** @var Repair */
 	private $repair;
 
 	protected function setUp(): void {
 		parent::setUp();
-		$this->config = $this->getMockBuilder(IConfig::class)
-			->getMock();
-		$this->rootFolder = $this->getMockBuilder(IRootFolder::class)
-			->getMock();
-		$this->logger = $this->getMockBuilder(ILogger::class)
-			->getMock();
-		$this->iniGetWrapper = $this->getMockBuilder(IniGetWrapper::class)
-			->getMock();
-		$this->repair = new Repair($this->config, $this->rootFolder, $this->logger, $this->iniGetWrapper);
+		$this->config = $this->createMock(IConfig::class);
+		$this->rootFolder = $this->createMock(IRootFolder::class);
+		$this->logger = $this->createMock(ILogger::class);
+		$this->iniGetWrapper = $this->createMock(IniGetWrapper::class);
+		$this->lockingProvider = $this->createMock(ILockingProvider::class);
+		$this->repair = new Repair($this->config, $this->rootFolder, $this->logger, $this->iniGetWrapper, $this->lockingProvider);
 		$this->input = $this->getMockBuilder(InputInterface::class)
 			->getMock();
 		$this->input->expects($this->any())

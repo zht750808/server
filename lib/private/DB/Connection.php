@@ -46,8 +46,8 @@ use OC\DB\QueryBuilder\QueryBuilder;
 use OC\SystemConfig;
 use OCP\DB\QueryBuilder\IQueryBuilder;
 use OCP\IDBConnection;
-use OCP\ILogger;
 use OCP\PreConditionNotMetException;
+use Psr\Log\LoggerInterface;
 
 class Connection extends ReconnectWrapper implements IDBConnection {
 	/** @var string */
@@ -59,7 +59,7 @@ class Connection extends ReconnectWrapper implements IDBConnection {
 	/** @var SystemConfig */
 	private $systemConfig;
 
-	/** @var ILogger */
+	/** @var LoggerInterface */
 	private $logger;
 
 	protected $lockedTable = null;
@@ -108,7 +108,7 @@ class Connection extends ReconnectWrapper implements IDBConnection {
 	 */
 	public function createQueryBuilder() {
 		$backtrace = $this->getCallerBacktrace();
-		\OC::$server->getLogger()->debug('Doctrine QueryBuilder retrieved in {backtrace}', ['app' => 'core', 'backtrace' => $backtrace]);
+		$this->logger->debug('Doctrine QueryBuilder retrieved in {backtrace}', ['app' => 'core', 'backtrace' => $backtrace]);
 		$this->queriesBuilt++;
 		return parent::createQueryBuilder();
 	}
@@ -121,7 +121,7 @@ class Connection extends ReconnectWrapper implements IDBConnection {
 	 */
 	public function getExpressionBuilder() {
 		$backtrace = $this->getCallerBacktrace();
-		\OC::$server->getLogger()->debug('Doctrine ExpressionBuilder retrieved in {backtrace}', ['app' => 'core', 'backtrace' => $backtrace]);
+		$this->logger->debug('Doctrine ExpressionBuilder retrieved in {backtrace}', ['app' => 'core', 'backtrace' => $backtrace]);
 		$this->queriesBuilt++;
 		return parent::getExpressionBuilder();
 	}
@@ -172,7 +172,7 @@ class Connection extends ReconnectWrapper implements IDBConnection {
 		$this->tablePrefix = $params['tablePrefix'];
 
 		$this->systemConfig = \OC::$server->getSystemConfig();
-		$this->logger = \OC::$server->getLogger();
+		$this->logger = \OC::$server->get(LoggerInterface::class);
 	}
 
 	/**

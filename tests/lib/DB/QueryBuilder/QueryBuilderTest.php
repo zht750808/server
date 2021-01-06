@@ -28,6 +28,7 @@ use OC\DB\QueryBuilder\QueryBuilder;
 use OC\SystemConfig;
 use OCP\IDBConnection;
 use OCP\ILogger;
+use Psr\Log\LoggerInterface;
 
 /**
  * Class QueryBuilderTest
@@ -46,7 +47,7 @@ class QueryBuilderTest extends \Test\TestCase {
 	/** @var SystemConfig|\PHPUnit\Framework\MockObject\MockObject */
 	protected $config;
 
-	/** @var ILogger|\PHPUnit\Framework\MockObject\MockObject */
+	/** @var LoggerInterface|\PHPUnit\Framework\MockObject\MockObject */
 	protected $logger;
 
 	protected function setUp(): void {
@@ -54,7 +55,7 @@ class QueryBuilderTest extends \Test\TestCase {
 
 		$this->connection = \OC::$server->getDatabaseConnection();
 		$this->config = $this->createMock(SystemConfig::class);
-		$this->logger = $this->createMock(ILogger::class);
+		$this->logger = $this->createMock(LoggerInterface::class);
 		$this->queryBuilder = new QueryBuilder($this->connection, $this->config, $this->logger);
 	}
 
@@ -176,9 +177,7 @@ class QueryBuilderTest extends \Test\TestCase {
 	}
 
 	public function dataSelect() {
-		$config = $this->createMock(SystemConfig::class);
-		$logger = $this->createMock(ILogger::class);
-		$queryBuilder = new QueryBuilder(\OC::$server->getDatabaseConnection(), $config, $logger);
+		$queryBuilder = new QueryBuilder(\OC::$server->getDatabaseConnection(), $this->config, $this->logger);
 		return [
 			// select('column1')
 			[['configvalue'], ['configvalue' => '99']],
@@ -244,9 +243,7 @@ class QueryBuilderTest extends \Test\TestCase {
 	}
 
 	public function dataSelectAlias() {
-		$config = $this->createMock(SystemConfig::class);
-		$logger = $this->createMock(ILogger::class);
-		$queryBuilder = new QueryBuilder(\OC::$server->getDatabaseConnection(), $config, $logger);
+		$queryBuilder = new QueryBuilder(\OC::$server->getDatabaseConnection(), $this->config, $this->logger);
 		return [
 			['configvalue', 'cv', ['cv' => '99']],
 			[$queryBuilder->expr()->literal('column1'), 'thing', ['thing' => 'column1']],
@@ -353,9 +350,7 @@ class QueryBuilderTest extends \Test\TestCase {
 	}
 
 	public function dataAddSelect() {
-		$config = $this->createMock(SystemConfig::class);
-		$logger = $this->createMock(ILogger::class);
-		$queryBuilder = new QueryBuilder(\OC::$server->getDatabaseConnection(), $config, $logger);
+		$queryBuilder = new QueryBuilder(\OC::$server->getDatabaseConnection(), $this->config, $this->logger);
 		return [
 			// addSelect('column1')
 			[['configvalue'], ['appid' => 'testFirstResult', 'configvalue' => '99']],

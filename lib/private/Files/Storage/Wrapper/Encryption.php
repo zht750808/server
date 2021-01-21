@@ -624,7 +624,7 @@ class Encryption extends Wrapper {
 			return false;
 		}
 
-		$result = $this->copyBetweenStorage($sourceStorage, $sourceInternalPath, $targetInternalPath, $preserveMtime, true);
+		$result = $this->copyBetweenStorage($sourceStorage, $sourceInternalPath, $targetInternalPath, $preserveMtime, false);
 		if ($result) {
 			if ($sourceStorage->is_dir($sourceInternalPath)) {
 				$result &= $sourceStorage->rmdir($sourceInternalPath);
@@ -1022,7 +1022,7 @@ class Encryption extends Wrapper {
 		}
 
 		try {
-			$encryptionModule = $this->getEncryptionModule($fullPath);
+			$encryptionModule = $this->getEncryptionModule($path);
 		} catch (ModuleDoesNotExistsException $e) {
 			return false;
 		}

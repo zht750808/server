@@ -75,6 +75,7 @@ class Local extends \OC\Files\Storage\Common {
 		if (substr($this->datadir, -1) !== '/') {
 			$this->datadir .= '/';
 		}
+		umask(022);
 		$this->dataDirLength = strlen($this->realDataDir);
 	}
 
@@ -273,6 +274,7 @@ class Local extends \OC\Files\Storage\Common {
 	}
 
 	public function file_put_contents($path, $data) {
+		umask(022);
 		$result = file_put_contents($this->getSourcePath($path), $data);
 		chmod($this->getSourcePath($path), 0644);
 		return $result;
@@ -301,6 +303,7 @@ class Local extends \OC\Files\Storage\Common {
 	}
 
 	public function rename($path1, $path2) {
+		umask(022);
 		$srcParent = dirname($path1);
 		$dstParent = dirname($path2);
 
@@ -346,6 +349,7 @@ class Local extends \OC\Files\Storage\Common {
 	}
 
 	public function copy($path1, $path2) {
+		umask(022);
 		if ($this->is_dir($path1)) {
 			return parent::copy($path1, $path2);
 		} else {
@@ -354,6 +358,7 @@ class Local extends \OC\Files\Storage\Common {
 	}
 
 	public function fopen($path, $mode) {
+		umask(022);
 		$result = fopen($this->getSourcePath($path), $mode);
 		if ($mode !== 'r') {
 			chmod($this->getSourcePath($path), 0644);
@@ -563,6 +568,7 @@ class Local extends \OC\Files\Storage\Common {
 	}
 
 	public function writeStream(string $path, $stream, int $size = null): int {
+		umask(022);
 		$result = $this->file_put_contents($path, $stream);
 		if ($result === false) {
 			throw new GenericFileException("Failed write steam to $path");

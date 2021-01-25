@@ -979,15 +979,17 @@ class Manager implements IManager {
 				$this->validateExpirationDate($share);
 				$expirationDateUpdated = true;
 			}
-		} elseif ($share->getShareType() === IShare::TYPE_LINK) {
+		} elseif ($share->getShareType() === IShare::TYPE_LINK || $share->getShareType() === IShare::TYPE_REMOTE) {
 			$this->linkCreateChecks($share);
 
-			$plainTextPassword = $share->getPassword();
+			if ($share->getShareType() === IShare::TYPE_LINK) {
+				$plainTextPassword = $share->getPassword();
 
-			$this->updateSharePasswordIfNeeded($share, $originalShare);
+				$this->updateSharePasswordIfNeeded($share, $originalShare);
 
-			if (empty($plainTextPassword) && $share->getSendPasswordByTalk()) {
-				throw new \InvalidArgumentException('Can’t enable sending the password by Talk with an empty password');
+				if (empty($plainTextPassword) && $share->getSendPasswordByTalk()) {
+					throw new \InvalidArgumentException('Can’t enable sending the password by Talk with an empty password');
+				}
 			}
 
 			if ($share->getExpirationDate() != $originalShare->getExpirationDate()) {
